@@ -16,7 +16,7 @@ export default class testElm extends Component {
     }
 
     add2(){
-        Toaster({close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem"});
+        Toaster({close: "required", theme: "light", closeButton: true, time: 3000, type: "info", content: "hello from testElem"});
     }
 
     render(){

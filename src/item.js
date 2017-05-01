@@ -7,12 +7,17 @@ import Store from './store';
 
 import './styles.scss';
 
-var storeSubscription = (callback) => { Store.addListener('change', callback)};
+let storeSubscription = (callback) => { Store.addListener('change', callback)};
 const snackTypes = {
     "warning": "fa fa-exclamation",
     "success": "fa fa-check",
     "info": "fa fa-info",
     "error": "fa fa-times-circle"
+}
+
+const themes = {
+    "light": "light",
+    "dark": "dark"
 }
 
 let lock = null;
@@ -57,6 +62,12 @@ export default class Item extends Component{
         let snacks = this.state.items.map(function(item, i) {
             let snackClose = ( item.closeButton ) ? "require-close" : "auto-close";
             if(i !== _this.state.items.length -1) snackClose += " hide-easy";
+            if( item.theme ) {
+                snackClose += " " + themes[item.theme];
+            }else{
+                snackClose += " dark";
+            }
+
             let snacksCounter = (_this.state.items.length > 1) ? "snacks-counter" : "hide";
             if( item.time && item.close === "auto" && !item.expiresAt ) {
                 let now = new Date();
