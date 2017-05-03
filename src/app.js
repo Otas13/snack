@@ -3,7 +3,7 @@
  */
 import reactDOM from 'react-dom';
 import React from 'react';
-import Item from './item';
+import Item from './Container';
 import Element from './testElement';
 
 let items = [

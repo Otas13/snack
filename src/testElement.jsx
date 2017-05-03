@@ -2,7 +2,7 @@
  * Created by Ota on 27.04.2017.
  */
 import React, { Component } from 'react';
-import Toaster from './test';
+import Snack from './Snack';
 
 export default class testElm extends Component {
 
@@ -12,11 +12,11 @@ export default class testElm extends Component {
     }
 
     add(){
-        Toaster({close: "auto", time: 3000, type: "info", content: "hello from testElem"});
+        Snack({close: "auto", time: 3000, type: "info", content: "hello from testElem"});
     }
 
     add2(){
-        Toaster({close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem"});
+        Snack({close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem"});
     }
 
     render(){

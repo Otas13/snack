@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 90);
+/******/ 	return __webpack_require__(__webpack_require__.s = 91);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10220,7 +10220,7 @@ __webpack_require__(99);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _styleModuleImportMap = {
-    'random-0.8946914947356952': {
+    'random-0.02897845000179866': {
         'auto-close': 'auto-close',
         'content': 'content',
         'icon': 'icon',
@@ -10442,9 +10442,9 @@ var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _test = __webpack_require__(91);
+var _Snack = __webpack_require__(90);
 
-var _test2 = _interopRequireDefault(_test);
+var _Snack2 = _interopRequireDefault(_Snack);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10472,12 +10472,12 @@ var testElm = function (_Component) {
     _createClass(testElm, [{
         key: 'add',
         value: function add() {
-            (0, _test2.default)({ close: "auto", time: 3000, type: "info", content: "hello from testElem" });
+            (0, _Snack2.default)({ close: "auto", time: 3000, type: "info", content: "hello from testElem" });
         }
     }, {
         key: 'add2',
         value: function add2() {
-            (0, _test2.default)({ close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem" });
+            (0, _Snack2.default)({ close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem" });
         }
     }, {
         key: 'render',
@@ -10511,6 +10511,35 @@ exports.default = testElm;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Snack;
+
+var _react = __webpack_require__(12);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _store = __webpack_require__(53);
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Created by Ota on 27.04.2017.
+ */
+function Snack(message) {
+  _store2.default.emit('change', message);
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _reactDom = __webpack_require__(52);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -10519,9 +10548,9 @@ var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _item = __webpack_require__(88);
+var _Container = __webpack_require__(88);
 
-var _item2 = _interopRequireDefault(_item);
+var _Container2 = _interopRequireDefault(_Container);
 
 var _testElement = __webpack_require__(89);
 
@@ -10538,37 +10567,8 @@ _reactDom2.default.render(_react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(_testElement2.default, null),
-    _react2.default.createElement(_item2.default, { items: items })
+    _react2.default.createElement(_Container2.default, { items: items })
 ), document.getElementById('app-root'));
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Test;
-
-var _react = __webpack_require__(12);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _store = __webpack_require__(53);
-
-var _store2 = _interopRequireDefault(_store);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Created by Ota on 27.04.2017.
- */
-function Test(message) {
-  _store2.default.emit('change', message);
-}
 
 /***/ }),
 /* 92 */
