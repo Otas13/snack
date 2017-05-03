@@ -2,7 +2,7 @@
 Simple lightweight react based notifications with animation
 
 ```javascript
-import Container from './item';
+import Container from './Container';
 let myToasts = [
     {close: "auto", closeButton: true, type: "warning", content: "abc", time: 3000}
 ]
@@ -10,7 +10,7 @@ let myToasts = [
 <Container theme="light"  items={myToasts} />
 
 ...another element
-    import Snack from './test';
+    import Snack from './Snack';
     Snack({close: "auto", time: 3000, type: "info", content: "hello from testElem"});
 ```
 
