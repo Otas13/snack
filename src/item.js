@@ -9,10 +9,10 @@ import './styles.scss';
 
 let storeSubscription = (callback) => { Store.addListener('change', callback)};
 const snackTypes = {
-    "warning": "fa fa-exclamation",
-    "success": "fa fa-check",
-    "info": "fa fa-info",
-    "error": "fa fa-times-circle"
+    "warning": "fa fa-exclamation fa-fw",
+    "success": "fa fa-check fa-fw",
+    "info": "fa fa-info fa-fw",
+    "error": "fa fa-times-circle fa-fw"
 }
 
 const themes = {
@@ -33,6 +33,11 @@ export default class Item extends Component{
         storeSubscription(( emittedData ) => {
             let items = this.state.items;
             items.push( emittedData );
+            let action = "pop";
+            if( emittedData ){
+                action = "push";
+            }
+            console.log(action);
             this.setState({ items: items });
         });
     }
@@ -61,14 +66,7 @@ export default class Item extends Component{
 
         let snacks = this.state.items.map(function(item, i) {
             let snackClose = ( item.closeButton ) ? "require-close" : "auto-close";
-            if(i !== _this.state.items.length -1) snackClose += " hide-easy";
-            if( item.theme ) {
-                snackClose += " " + themes[item.theme];
-            }else{
-                snackClose += " dark";
-            }
 
-            let snacksCounter = (_this.state.items.length > 1) ? "snacks-counter" : "hide";
             if( item.time && item.close === "auto" && !item.expiresAt ) {
                 let now = new Date();
                 item.expiresAt = new Date(now.setMilliseconds(now.getMilliseconds() + item.time));
@@ -86,7 +84,6 @@ export default class Item extends Component{
 
             return (
                 <div key={i} styleName={snackClose}>
-                    <div styleName={snacksCounter}>{ _this.state.items.length }</div>
                     <div styleName="icon">
                         <i className={snackTypes[item.type]} aria-hidden="true">&nbsp;</i>
                     </div>
@@ -94,7 +91,7 @@ export default class Item extends Component{
                         {item.content}
                     </div>
                     <div styleName="dismiss" onClick={() => _this.removeItem(_this)}>
-                        <i className="fa fa-times" aria-hidden="true"></i>
+                        <i className="fa fa-times" aria-hidden="true">&nbsp;</i>
                     </div>
                 </div>
             );
@@ -120,20 +117,20 @@ export default class Item extends Component{
                 this.setState({items: items, key: alarm});
             }, alarm);
         }
-
+        let theme = "container dark";
+        if(this.props.theme){
+            theme = themes[this.props.theme] + " container";
+        }
 
         return(
             <div>
-                <div styleName="container">
+                <div className={theme}>
                     <CSSTransitionGroup
                         transitionName="snack"
-                        transitionEnterTimeout={200}
-                        transitionLeaveTimeout={500}>
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={1000}>
                         {snacks}
                     </CSSTransitionGroup>
-                </div>
-                <div>
-                    <button style={{float: "left"}} onClick={()=>_this.addItem(_this)}>Add</button>
                 </div>
             </div>
         );

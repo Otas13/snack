@@ -7,7 +7,7 @@ import Item from './item';
 import Element from './testElement';
 
 let items = [
-    {close: "auto", closeButton: true, theme: "light", type: "warning", content: "abc", time: 3000},
+    {close: "auto", closeButton: true, type: "warning", content: "abc", time: 3000},
     {close: "auto", closeButton: true, type: "error", content: "def", time: 1000},
     {close: "auto", closeButton: true, type: "success", time: 2000, content: "ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg " +
 "ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg"},
@@ -16,7 +16,7 @@ let items = [
 reactDOM.render(
     <div>
     <Element/>
-    <Item items={items} />
+    <Item  items={items} />
         </div>,
     document.getElementById('app-root')
 );

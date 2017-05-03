@@ -10220,7 +10220,7 @@ __webpack_require__(99);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _styleModuleImportMap = {
-    'random-0.686803157904045': {
+    'random-0.8946914947356952': {
         'auto-close': 'auto-close',
         'content': 'content',
         'icon': 'icon',
@@ -10228,12 +10228,13 @@ var _styleModuleImportMap = {
         'fa-exclamation': 'fa-exclamation',
         'fa-info': 'fa-info',
         'fa-times-circle': 'fa-times-circle',
-        'snacks-counter': 'snacks-counter',
         'dismiss': 'dismiss',
         'require-close': 'require-close',
         'hide': 'hide',
-        'hide-easy': 'hide-easy',
         'container': 'container',
+        'light': 'light',
+        'reqire-close': 'reqire-close',
+        'dark': 'dark',
         'snack-enter': 'snack-enter',
         'snack-enter-active': 'snack-enter-active',
         'snack-leave': 'snack-leave',
@@ -10260,10 +10261,15 @@ var storeSubscription = function storeSubscription(callback) {
     _store2.default.addListener('change', callback);
 };
 var snackTypes = {
-    "warning": "fa fa-exclamation",
-    "success": "fa fa-check",
-    "info": "fa fa-info",
-    "error": "fa fa-times-circle"
+    "warning": "fa fa-exclamation fa-fw",
+    "success": "fa fa-check fa-fw",
+    "info": "fa fa-info fa-fw",
+    "error": "fa fa-times-circle fa-fw"
+};
+
+var themes = {
+    "light": "light",
+    "dark": "dark"
 };
 
 var lock = null;
@@ -10288,6 +10294,11 @@ var Item = function (_Component) {
             storeSubscription(function (emittedData) {
                 var items = _this3.state.items;
                 items.push(emittedData);
+                var action = "pop";
+                if (emittedData) {
+                    action = "push";
+                }
+                console.log(action);
                 _this3.setState({ items: items });
             });
         }
@@ -10320,8 +10331,7 @@ var Item = function (_Component) {
 
             var snacks = this.state.items.map(function (item, i) {
                 var snackClose = item.closeButton ? "require-close" : "auto-close";
-                if (i !== _this.state.items.length - 1) snackClose += " hide-easy";
-                var snacksCounter = _this.state.items.length > 1 ? "snacks-counter" : "hide";
+
                 if (item.time && item.close === "auto" && !item.expiresAt) {
                     var now = new Date();
                     item.expiresAt = new Date(now.setMilliseconds(now.getMilliseconds() + item.time));
@@ -10343,13 +10353,6 @@ var Item = function (_Component) {
                     },
                     _react2.default.createElement(
                         'div',
-                        {
-                            className: (0, _getClassName3.default)(snacksCounter, _styleModuleImportMap)
-                        },
-                        _this.state.items.length
-                    ),
-                    _react2.default.createElement(
-                        'div',
                         { className: 'icon' },
                         _react2.default.createElement(
                             'i',
@@ -10367,7 +10370,11 @@ var Item = function (_Component) {
                         { className: 'dismiss', onClick: function onClick() {
                                 return _this.removeItem(_this);
                             } },
-                        _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' })
+                        _react2.default.createElement(
+                            'i',
+                            { className: 'fa fa-times', 'aria-hidden': 'true' },
+                            '\xA0'
+                        )
                     )
                 );
             });
@@ -10389,31 +10396,24 @@ var Item = function (_Component) {
                     _this4.setState({ items: items, key: alarm });
                 }, alarm);
             }
+            var theme = "container dark";
+            if (this.props.theme) {
+                theme = themes[this.props.theme] + " container";
+            }
 
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'container' },
+                    { className: theme },
                     _react2.default.createElement(
                         _CSSTransitionGroup2.default,
                         {
                             transitionName: 'snack',
-                            transitionEnterTimeout: 200,
-                            transitionLeaveTimeout: 500 },
+                            transitionEnterTimeout: 500,
+                            transitionLeaveTimeout: 1000 },
                         snacks
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'button',
-                        { style: { float: "left" }, onClick: function onClick() {
-                                return _this.addItem(_this);
-                            } },
-                        'Add'
                     )
                 )
             );
@@ -10895,7 +10895,7 @@ module.exports = exports['default'];
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"auto-close":"auto-close","autoClose":"auto-close","require-close":"require-close","requireClose":"require-close","content":"content","icon":"icon","fa-check":"fa-check","faCheck":"fa-check","fa-exclamation":"fa-exclamation","faExclamation":"fa-exclamation","fa-info":"fa-info","faInfo":"fa-info","fa-times-circle":"fa-times-circle","faTimesCircle":"fa-times-circle","snacks-counter":"snacks-counter","snacksCounter":"snacks-counter","dismiss":"dismiss","hide":"hide","hide-easy":"hide-easy","hideEasy":"hide-easy","container":"container","snack-enter":"snack-enter","snackEnter":"snack-enter","snack-enter-active":"snack-enter-active","snackEnterActive":"snack-enter-active","snack-leave":"snack-leave","snackLeave":"snack-leave","snack-leave-active":"snack-leave-active","snackLeaveActive":"snack-leave-active"};
+module.exports = {"auto-close":"auto-close","autoClose":"auto-close","require-close":"require-close","requireClose":"require-close","content":"content","icon":"icon","fa-check":"fa-check","faCheck":"fa-check","fa-exclamation":"fa-exclamation","faExclamation":"fa-exclamation","fa-info":"fa-info","faInfo":"fa-info","fa-times-circle":"fa-times-circle","faTimesCircle":"fa-times-circle","dismiss":"dismiss","hide":"hide","container":"container","light":"light","reqire-close":"reqire-close","reqireClose":"reqire-close","dark":"dark","snack-enter":"snack-enter","snackEnter":"snack-enter","snack-enter-active":"snack-enter-active","snackEnterActive":"snack-enter-active","snack-leave":"snack-leave","snackLeave":"snack-leave","snack-leave-active":"snack-leave-active","snackLeaveActive":"snack-leave-active"};
 
 /***/ }),
 /* 100 */
