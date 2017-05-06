@@ -1,5 +1,18 @@
-$bgColor: #323232;
-$fontColor: #EEEEEE;
+$dark: #323232;
+$light: #EEEEEE;
+$gap: 1rem;
+
+@mixin mobile-only {
+  @media (max-width : 640px) {
+    @content;
+  }
+}
+
+@mixin tab-above {
+  @media (min-width : 641px) {
+    @content;
+  }
+}
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -9,33 +22,34 @@ $fontColor: #EEEEEE;
 }
 
 .auto-close {
+  float: right;
+  clear: right;
+  display: flex;
+  flex-direction: row;
   margin-top: 5px;
-  overflow: hidden;
+  padding: $gap;
   font-size: smaller;
   text-align: justify;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   @include border-radius(3px);
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
   .content {
-    padding-left: 0.5rem;
-    max-width: 350px;
-    min-width: 100px;
-    margin: 1rem;
-    margin-left: 0;
-    margin-right: 0;
+    padding-left: $gap /2;
+    padding-right: $gap;
+
+    @include tab-above{
+      min-width: 100px;
+      max-width: 350px;
+    }
   }
 
   .icon {
-    overflow: hidden;
+    display: inline-block;
     margin: auto;
-    margin-right: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 0;
+    margin-right: $gap /2;
     font-size: 20px;
+    padding: 0;
 
     .fa-check{
       color: #6DA652;
@@ -59,33 +73,22 @@ $fontColor: #EEEEEE;
 .require-close{
   @extend .auto-close;
 
-  .content {
-    width: 300px;
-  }
-
   .dismiss{
+    margin: auto;
+    margin-right: 0;
+    display: inline-flex;
     &:hover{
       color: #A6A6A6;
       cursor: pointer;
     }
-    display: inline-block;
-    margin: auto;
-    margin-right: 1rem;
-    margin-left: 0;
-    padding: 0;
-    padding-left: 1rem;
   }
-}
-
-.hide{
-  display: none!important;
 }
 
 .container {
   &.light{
     .auto-close, .reqire-close{
-      background: $fontColor;
-      color: $bgColor;
+      background: $light;
+      color: $dark;
 
       .content{
         border-left: 1px solid #A6A6A6;
@@ -99,8 +102,8 @@ $fontColor: #EEEEEE;
         background: #383838;
       }
 
-      background: $bgColor;
-      color: $fontColor;
+      background: $dark;
+      color: $light;
 
       .content{
         border-left: 1px solid #A6A6A6;
@@ -108,10 +111,16 @@ $fontColor: #EEEEEE;
     }
   }
 
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 405px;
+  @include mobile-only{
+    width: 100%;
+  }
+
+  @include tab-above{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+
   padding: 0;
 }
 
@@ -120,26 +129,4 @@ body{
   margin: 0;
   background: #FFF;
   font-family: sans-serif;
-}
-
-.snack-enter {
-  max-height: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.snack-enter.snack-enter-active {
-  max-height: 300px;
-  margin-top: 1rem;
-  transition: all .5s ease .2s;
-}
-
-.snack-leave {
-  max-height: 300px;
-}
-.snack-leave.snack-leave-active {
-  padding: 0;
-  max-height: 0;
-  margin-top: 0;
-  transition: all .5s ease .2s;
 }

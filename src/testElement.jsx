@@ -16,7 +16,18 @@ export default class testElm extends Component {
     }
 
     add2(){
-        Snack({close: "required", closeButton: true, time: 3000, type: "info", content: "hello from testElem"});
+        Snack({close: "required", closeButton: true, time: 3000, type: "success", content: this.makeid()});
+    }
+
+    makeid()
+    {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
 
     render(){

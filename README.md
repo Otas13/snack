@@ -1,5 +1,5 @@
 # snack
-Simple lightweight react based notifications with animation
+Simple lightweight react based notifications.
 
 ```javascript
 import Container from './Container';

@@ -2,7 +2,6 @@
  * Created by Ota on 26.04.2017.
  */
 import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import Store from './store';
 
 import './styles.scss';
@@ -47,24 +46,21 @@ export default class Item extends Component{
     }
 
 
-    removeItem(_this){
-        _this.state.items.pop();
-        this.setState({items: _this.state.items});
+    removeItem(_this, key){
+        let items = [];
+        _this.state.items.map((item, i)=>{
+            if( key != i ){
+                items.push(item);
+            }
+        });
+        this.setState({items: items});
     }
-
-    addItem(_this){
-        let items = _this.state.items;
-        items.push("asdf");
-        _this.setState({items: items});
-        return;
-    }
-
 
     render(){
         let _this = this;
         let alarm = null;
 
-        let snacks = this.state.items.map(function(item, i) {
+        let snacks = this.state.items.map((item, i)=> {
             let snackClose = ( item.closeButton ) ? "require-close" : "auto-close";
 
             if( item.time && item.close === "auto" && !item.expiresAt ) {
@@ -90,19 +86,13 @@ export default class Item extends Component{
                     <div styleName="content">
                         {item.content}
                     </div>
-                    <div styleName="dismiss" onClick={() => _this.removeItem(_this)}>
+                    <div styleName="dismiss" onClick={() => _this.removeItem(_this, i)}>
                         <i className="fa fa-times" aria-hidden="true">&nbsp;</i>
                     </div>
                 </div>
             );
         });
 
-        console.log("access: " + (alarm > 0 && this.state.key == lock)
-            + " lock: " + lock + " key: " + this.state.key + " alarm: " + (alarm - new Date())
-
-        );
-
-        console.log(snacks);
         if(alarm > 0 && this.state.key == lock) {
             alarm = alarm - new Date();
             lock = alarm;
@@ -125,12 +115,7 @@ export default class Item extends Component{
         return(
             <div>
                 <div className={theme}>
-                    <CSSTransitionGroup
-                        transitionName="snack"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={1000}>
-                        {snacks}
-                    </CSSTransitionGroup>
+                    {snacks}
                 </div>
             </div>
         );
