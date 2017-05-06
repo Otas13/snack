@@ -1,5 +1,6 @@
 # snack
 Simple lightweight react based notifications.
+[Demo](https://otas13.github.io/snack/)
 
 ```javascript
 import Container from './Container';
