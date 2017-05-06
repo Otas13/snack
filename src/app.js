@@ -17,6 +17,6 @@ reactDOM.render(
     <div>
     <Item  items={items} />
         <Element/>
-        </div>,
+    </div>,
     document.getElementById('app-root')
 );

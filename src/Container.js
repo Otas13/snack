@@ -36,7 +36,6 @@ export default class Item extends Component{
             if( emittedData ){
                 action = "push";
             }
-            console.log(action);
             this.setState({ items: items });
         });
     }

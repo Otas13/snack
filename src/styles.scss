@@ -22,8 +22,11 @@ $gap: 1rem;
 }
 
 .auto-close {
-  float: right;
-  clear: right;
+  @include tab-above{
+    float: right;
+    clear: right;
+  }
+
   display: flex;
   flex-direction: row;
   margin-top: 5px;

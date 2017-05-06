@@ -1,6 +1,4 @@
 .auto-close, .require-close {
-  float: right;
-  clear: right;
   display: flex;
   flex-direction: row;
   margin-top: 5px;
@@ -12,10 +10,14 @@
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px; }
+  @media screen and (min-width: 641px) {
+    .auto-close, .require-close {
+      float: right;
+      clear: right; } }
   .auto-close .content, .require-close .content {
     padding-left: 0.5rem;
     padding-right: 1rem; }
-    @media (min-width: 641px) {
+    @media screen and (min-width: 641px) {
       .auto-close .content, .require-close .content {
         min-width: 100px;
         max-width: 350px; } }
@@ -60,10 +62,10 @@
       background: #383838; }
     .container.dark .auto-close .content, .container.dark .require-close .content, .container.dark .reqire-close .content {
       border-left: 1px solid #A6A6A6; }
-  @media (max-width: 640px) {
+  @media screen and (max-width: 640px) {
     .container {
       width: 100%; } }
-  @media (min-width: 641px) {
+  @media screen and (min-width: 641px) {
     .container {
       position: fixed;
       bottom: 20px;

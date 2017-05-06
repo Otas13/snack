@@ -9615,7 +9615,7 @@ __webpack_require__(89);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _styleModuleImportMap = {
-    'random-0.9126873262144541': {
+    'random-0.10705317526411617': {
         'auto-close': 'auto-close',
         'content': 'content',
         'icon': 'icon',
@@ -9688,7 +9688,6 @@ var Item = function (_Component) {
                 if (emittedData) {
                     action = "push";
                 }
-                console.log(action);
                 _this3.setState({ items: items });
             });
         }
@@ -9964,11 +9963,6 @@ _reactDom2.default.render(_react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(_Container2.default, { items: items }),
-    _react2.default.createElement(
-        'p',
-        null,
-        'fasdfasdfasd f asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj'
-    ),
     _react2.default.createElement(_testElement2.default, null)
 ), document.getElementById('app-root'));
 
