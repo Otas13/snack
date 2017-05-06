@@ -3,13 +3,13 @@ $light: #EEEEEE;
 $gap: 1rem;
 
 @mixin mobile-only {
-  @media (max-width : 640px) {
+  @media screen and (max-width : 640px) {
     @content;
   }
 }
 
 @mixin tab-above {
-  @media (min-width : 641px) {
+  @media screen and (min-width : 641px) {
     @content;
   }
 }

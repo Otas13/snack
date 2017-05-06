@@ -16,17 +16,6 @@ let items = [
 reactDOM.render(
     <div>
     <Item  items={items} />
-        <p>
-            fasdfasdfasd
-            f
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-            asdfas d fgghrtywr t5yr etretyr etyu 5wtfd gcxvn vbmnnm dgh jdghj
-        </p>
         <Element/>
         </div>,
     document.getElementById('app-root')
