@@ -12,11 +12,11 @@ export default class testElm extends Component {
     }
 
     add(){
-        Snack({close: "auto", time: 3000, type: "info", content: "hello from testElem"});
+        Snack({close: "auto", time: 3000, closeButton: true, type: "success", content: this.makeid()});
     }
 
     add2(){
-        Snack({close: "required", closeButton: true, time: 3000, type: "success", content: this.makeid()});
+        Snack({close: "required", closeButton: true, type: "success", content: this.makeid()});
     }
 
     makeid()
@@ -24,7 +24,7 @@ export default class testElm extends Component {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for( var i=0; i < 5; i++ )
+        for( var i=0; i < 20; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;

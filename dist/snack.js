@@ -9615,7 +9615,7 @@ __webpack_require__(89);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _styleModuleImportMap = {
-    'random-0.10705317526411617': {
+    'random-0.568363924635934': {
         'auto-close': 'auto-close',
         'content': 'content',
         'icon': 'icon',
@@ -9672,7 +9672,7 @@ var Item = function (_Component) {
 
         var _this2 = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
 
-        _this2.state = { items: props.items, key: null };
+        _this2.state = { items: [], key: null };
         return _this2;
     }
 
@@ -9848,12 +9848,12 @@ var testElm = function (_Component) {
     _createClass(testElm, [{
         key: 'add',
         value: function add() {
-            (0, _Snack2.default)({ close: "auto", time: 3000, type: "info", content: "hello from testElem" });
+            (0, _Snack2.default)({ close: "auto", time: 3000, closeButton: true, type: "success", content: this.makeid() });
         }
     }, {
         key: 'add2',
         value: function add2() {
-            (0, _Snack2.default)({ close: "required", closeButton: true, time: 3000, type: "success", content: this.makeid() });
+            (0, _Snack2.default)({ close: "required", closeButton: true, type: "success", content: this.makeid() });
         }
     }, {
         key: 'makeid',
@@ -9861,7 +9861,7 @@ var testElm = function (_Component) {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 20; i++) {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             }return text;
         }
@@ -9908,7 +9908,7 @@ module.exports = __webpack_require__(123);
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = Snack;
 
@@ -9925,8 +9925,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Created by Ota on 27.04.2017.
  */
-function Snack(message) {
-  _store2.default.emit('change', message);
+var flag = true;
+
+function Snack(snackObject) {
+    /*
+    *       error messages
+    */
+    if (!snackObject.close) {
+        console.error("Property 'close': 'auto' | 'require' not specified.");
+        if (!snackObject.time) {
+            console.error("Property 'close': 'auto' require property 'time': int [ms]");
+        }
+        flag = false;
+    }
+    if (!snackObject.closeButton) {
+        console.error("Property 'closeButton': true | false not specified.");
+        flag = false;
+    }
+    if (!snackObject.type) {
+        console.error("Property 'type': 'info' | 'warning' | 'success' | 'error' not specified.");
+        flag = false;
+    }
+    if (!snackObject.content) {
+        console.error("Property 'content': 'text of notification' not specified.");
+        flag = false;
+    }
+
+    if (flag) {
+        _store2.default.emit('change', snackObject);
+    }
+    return;
 }
 
 /***/ }),
@@ -9957,12 +9985,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Created by Ota on 26.04.2017.
  */
-var items = [{ close: "auto", closeButton: true, type: "warning", content: "abc", time: 3000 }, { close: "auto", closeButton: true, type: "error", content: "def", time: 1000 }, { close: "auto", closeButton: true, type: "success", time: 2000, content: "ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg " + "ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg" }];
-
 _reactDom2.default.render(_react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_Container2.default, { items: items }),
+    _react2.default.createElement(_Container2.default, null),
     _react2.default.createElement(_testElement2.default, null)
 ), document.getElementById('app-root'));
 

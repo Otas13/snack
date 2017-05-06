@@ -6,16 +6,11 @@ import React from 'react';
 import Item from './Container';
 import Element from './testElement';
 
-let items = [
-    {close: "auto", closeButton: true, type: "warning", content: "abc", time: 3000},
-    {close: "auto", closeButton: true, type: "error", content: "def", time: 1000},
-    {close: "auto", closeButton: true, type: "success", time: 2000, content: "ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg " +
-"ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg ghi dfsgsdfg sdfgsdfgsdfg sfdgsdfg sdfg sdfg sdgfsdfgsdg"},
-];
+
 
 reactDOM.render(
     <div>
-    <Item  items={items} />
+        <Item />
         <Element/>
     </div>,
     document.getElementById('app-root')

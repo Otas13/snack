@@ -25,7 +25,7 @@ export default class Item extends Component{
 
     constructor(props){
         super(props);
-        this.state = {items: props.items, key: null};
+        this.state = {items: [], key: null};
     }
 
     componentDidMount() {
