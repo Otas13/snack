@@ -25,7 +25,6 @@ export default class testElm extends Component {
 
     add4(){
         Snack.dismissLoadingSnack();
-        Snack.createSnack({close: "auto", time: 3000, closeButton: true, type: "success", content: "Loading success"});
     }
 
     makeid()
@@ -36,16 +35,16 @@ export default class testElm extends Component {
         for( var i=0; i < 20; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-        return text;
+        return text + "    2";
     }
 
     render(){
         return(
             <div>
-            <button onClick={this.add.bind(this)}>auto close</button>
-            <button onClick={this.add2.bind(this)}>user close</button>
-            <button onClick={this.add3.bind(this)}>create loading</button>
-            <button onClick={this.add4.bind(this)}>dismiss loading</button>
+            <button onClick={this.add.bind(this)}>auto close2</button>
+            <button onClick={this.add2.bind(this)}>user close2</button>
+            <button onClick={this.add3.bind(this)}>create loading2</button>
+            <button onClick={this.add4.bind(this)}>dismiss loading2</button>
             </div>
         )
     }

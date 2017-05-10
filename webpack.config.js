@@ -16,9 +16,9 @@ module.exports =
         output: { path: __dirname + '/dist/', filename: 'snack.js' },
         resolve: {
             extensions: [
-                        ".js",
-                        ".scss",
-                        ".jsx",
+                ".js",
+                ".scss",
+                ".jsx",
             ],
             modules: ["node_modules"],
         },
@@ -64,5 +64,5 @@ module.exports =
                     })
                 }
             ]
-    }
-};
+        }
+    };

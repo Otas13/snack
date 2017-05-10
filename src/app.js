@@ -3,15 +3,15 @@
  */
 import reactDOM from 'react-dom';
 import React from 'react';
-import Item from './Container';
+import Container from './Container';
 import Element from './testElement';
-
-
+import Element2 from './testElement2';
 
 reactDOM.render(
     <div>
-        <Item />
+        <Container />
         <Element/>
+        <Element2/>
     </div>,
     document.getElementById('app-root')
 );

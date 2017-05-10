@@ -1,44 +1,53 @@
-.auto-close, .require-close {
+.auto-close, .loading, .require-close {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
   padding: 1rem;
   font-size: smaller;
   text-align: justify;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px; }
   @media screen and (min-width: 641px) {
-    .auto-close, .require-close {
+    .auto-close, .loading, .require-close {
       float: right;
       clear: right; } }
-  .auto-close .content, .require-close .content {
+  .auto-close .content, .loading .content, .require-close .content {
     padding-left: 0.5rem;
     padding-right: 1rem; }
     @media screen and (min-width: 641px) {
-      .auto-close .content, .require-close .content {
+      .auto-close .content, .loading .content, .require-close .content {
         min-width: 100px;
         max-width: 350px; } }
-  .auto-close .icon, .require-close .icon {
+  .auto-close .icon, .loading .icon, .require-close .icon {
     display: inline-block;
     margin: auto;
     margin-left: 0;
     margin-right: 0.5rem;
     font-size: 20px;
     padding: 0; }
-    .auto-close .icon .fa-check, .require-close .icon .fa-check {
+    .auto-close .icon .fa-check, .loading .icon .fa-check, .require-close .icon .fa-check {
       color: #6DA652; }
-    .auto-close .icon .fa-exclamation, .require-close .icon .fa-exclamation {
+    .auto-close .icon .fa-exclamation, .loading .icon .fa-exclamation, .require-close .icon .fa-exclamation {
       color: #FFCF56; }
-    .auto-close .icon .fa-info, .require-close .icon .fa-info {
+    .auto-close .icon .fa-info, .loading .icon .fa-info, .require-close .icon .fa-info {
       color: #6798D0; }
-    .auto-close .icon, .require-close .icon,
-    .auto-close .icon .fa-times-circle, .require-close .icon .fa-times-circle {
+    .auto-close .icon, .loading .icon, .require-close .icon,
+    .auto-close .icon .fa-times-circle, .loading .icon .fa-times-circle, .require-close .icon .fa-times-circle {
       color: #EF5464; }
-  .auto-close .dismiss, .require-close .dismiss {
+  .auto-close .dismiss, .loading .dismiss, .require-close .dismiss {
     display: none; }
+
+.loading .icon {
+  color: #EEEEEE;
+  line-height: 20px; }
+
+.loading .content {
+  border: none !important; }
 
 .require-close .dismiss {
   margin: auto;
@@ -50,17 +59,17 @@
 
 .container {
   padding: 0; }
-  .container.light .auto-close, .container.light .require-close, .container.light .reqire-close {
+  .container.light .auto-close, .container.light .loading, .container.light .require-close, .container.light .reqire-close {
     background: #EEEEEE;
     color: #323232; }
-    .container.light .auto-close .content, .container.light .require-close .content, .container.light .reqire-close .content {
+    .container.light .auto-close .content, .container.light .loading .content, .container.light .require-close .content, .container.light .reqire-close .content {
       border-left: 1px solid #A6A6A6; }
-  .container.dark .auto-close, .container.dark .require-close, .container.dark .reqire-close {
+  .container.dark .auto-close, .container.dark .loading, .container.dark .require-close, .container.dark .reqire-close {
     background: #323232;
     color: #EEEEEE; }
-    .container.dark .auto-close:hover, .container.dark .require-close:hover, .container.dark .reqire-close:hover {
-      background: #383838; }
-    .container.dark .auto-close .content, .container.dark .require-close .content, .container.dark .reqire-close .content {
+    .container.dark .auto-close:hover, .container.dark .loading:hover, .container.dark .require-close:hover, .container.dark .reqire-close:hover {
+      background: #323232; }
+    .container.dark .auto-close .content, .container.dark .loading .content, .container.dark .require-close .content, .container.dark .reqire-close .content {
       border-left: 1px solid #A6A6A6; }
   @media screen and (max-width: 640px) {
     .container {
